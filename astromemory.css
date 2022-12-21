@@ -5,6 +5,7 @@ body{
 }
 .container{
     font-family: cursive;
+    
 }
 .bg-image{
     background-size: cover;
@@ -12,7 +13,9 @@ body{
     background-repeat: no-repeat;
 }
 h1{
-    font-size: 1.8em !important;
+    font-size: 2em !important;
+    text-shadow: 1px 1px white;
+    color: red;
 }
 
 /*Inputs (leve & waiting time : */
@@ -53,7 +56,7 @@ h1{
 /* Margin for jetons  : */
 #div-marge{
     height: 10em;
-    padding-top: 7em;
+    padding-top: 4.8em;
 }
 .img-logo{
     width:2em;
