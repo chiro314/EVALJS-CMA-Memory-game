@@ -1,0 +1,87 @@
+body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+.container{
+    font-family: cursive;
+}
+.bg-image{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+h1{
+    font-size: 1.8em !important;
+}
+
+/*Level : */
+
+#in-level{
+    width: 2em;
+    margin: auto;
+    margin-top: 1em;
+}
+.cadre {
+    color: red;
+    border-radius: 4px;
+    background-color:aquamarine   ;  /* #6495ED;   /*:#3193A6; */
+    text-shadow: 1px 1px white
+}
+
+/* Astrological sign : */
+.img-signe{
+    width: 7.5em;
+    margin-left: 2em;
+    margin-top: 3em;
+}
+
+/* Jeton : */
+.img-jeton{
+    width: 6em;
+    margin-left: 1em;
+    margin-top: 2em;
+}
+
+/* History : */
+#div-histo{
+    margin-top: 2em;
+    height: 10em;
+    overflow: auto;
+}
+/* Margin for jetons  : */
+#div-marge{
+    height: 10em;
+    padding-top: 7em;
+}
+.img-logo{
+    width: 2em;
+}
+
+/* "C'est parti" : */
+
+#bt-instancier, #bt-accueil {
+    width: 8em;
+    margin: auto;
+    margin-top: 1em;
+
+    color: white;
+    background-color: #6495ED;
+    text-shadow: 1px 1px black;
+
+    text-decoration: none;
+    text-align: center;
+    padding: 5px;
+    border: 3px outset #c0c0c0;
+}
+#bt-instancier:hover, #bt-accueil:hover {
+    background-color:#063227;
+    
+    background-image: url(aqua.jpg);
+    border: 3px inset #c0c0c0;
+}
+
+
+
+
+
