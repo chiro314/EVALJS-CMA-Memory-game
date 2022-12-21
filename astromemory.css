@@ -15,18 +15,19 @@ h1{
     font-size: 1.8em !important;
 }
 
-/*Level : */
+/*Inputs (leve & waiting time : */
 
 #in-level{
     width: 2em;
     margin: auto;
     margin-top: 1em;
 }
-.cadre {
+.input {
     color: red;
     border-radius: 4px;
     background-color:aquamarine   ;  /* #6495ED;   /*:#3193A6; */
-    text-shadow: 1px 1px white
+    text-shadow: 1px 1px white;
+    margin-right: 1em;
 }
 
 /* Astrological sign : */
@@ -55,10 +56,10 @@ h1{
     padding-top: 7em;
 }
 .img-logo{
-    width: 2em;
+    width:2em;
 }
 
-/* "C'est parti" : */
+/* "C'est parti" buton : */
 
 #bt-instancier, #bt-accueil {
     width: 8em;
@@ -80,7 +81,6 @@ h1{
     background-image: url(aqua.jpg);
     border: 3px inset #c0c0c0;
 }
-/*TEST GITHUB*/
 
 
 

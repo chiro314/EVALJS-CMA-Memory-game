@@ -15,8 +15,15 @@
             <div class="col-12 text-center text-white pb-5">
                 
                 <h1 id="h1" class="mt-4 mb-3">CHERCHEZ L’ÂME SŒUR</h1>
-                <label for="select-level">Niveau :</label>
-                <select name="level" id="select-level" class="cadre"></select>
+                <div class="row">
+                    <div class="col-12">
+                        <label for="select-level">Niveau :</label>
+                        <select name="level" id="select-level" class="input"></select>
+                        <label for="select-waitingtime">Temps avant masquage :</label>
+                        <select name="level" id="select-waitingtime" class="input"></select>
+                    </div>
+                </div>
+                
                 <button id="bt-instancier" type="button">C'est parti</button> 
                 <button id="bt-accueil" type="button">Accueil</button> 
                 <p class="mt-2">Retrouvez les paires de chaque signe astrologique</p>
@@ -25,7 +32,7 @@
                     <div class="col-12 offset-md-1 col-md-10">
                         <div class="row" id="div-row-signs"></div>
                     </div>
-                    <div class="pt-5"><span>ASTROMEMORY by </span><img class="img-logo" src="logo.png" alt="logo"></div>
+                    <div class="pt-4"><span>ASTROMEMORY by </span><img class="img-logo" src="logo.png" alt="logo"></div>
                 </div>
 
                 <div class="row" id="row-jetons">

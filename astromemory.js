@@ -7,9 +7,13 @@ const divRowSigns = document.getElementById("div-row-signs"); //for the 12 astro
 const rowJetons = document.getElementById("row-jetons"); //for the 24 (or less) jetons (token).
 const divRowJetons = document.getElementById("div-row-jetons"); //for the 24 (or less) jetons (token).
 
-//level :
+//Level :
 let level = 12; //between 2 and 12 couples to be found. Actually 3 levels (12, 8 and 4) in the listbox.
 const selectLevel = document.getElementById('select-level');
+
+//Waiting time :
+var waitingtime = 2000; //time needed for memorization before the 2 wrong jetons are hiden.
+const selectWaitingtime = document.getElementById('select-waitingtime');
 
 //Score display :
 const tabHonors = [ "Egaré", "Fainéant", "Paresseux", "Molasson", "Véléitaire", "Opiniâtre", "Ambitieux",
@@ -19,6 +23,7 @@ const rowScore = document.getElementById("row-score"); //score display.
 const spanScore = document.getElementById("span-score"); //score display.
 const spanHonor = document.getElementById("span-honor"); //score display.
 let timeCount = 0; //duration of the game in seconds.
+let gameTimeCountTimeout = 0; //returned timeoutID (positive integer value) which identifies the timer created by the call to setTimeout(). This value is passed to clearTimeout() to cancel the timeout.
 let game = 0; //number of the game for the history
 let nbClics = 0; //number of clicks (or double clicks) in the game 
 const divHisto = document.getElementById("div-histo"); //to display the history of the successive games.
@@ -32,7 +37,6 @@ let tabGameSignesImages = []; //the couples of images selected for the game
 let tabGameSignesImagesRandom = [];  //the couples of images selected for the game, in a random order
 let instancesTable = [];    //array of the jetons objects (the indice is the number of the object)
 let shownJetonNumber = -1; //number of the jeton shown if exists.
-const WAITINGTIME = 2000; //time needed for memorization before the 2 wrong jetons are hiden.
 
 //Buttons :
 const btInstancier = document.getElementById("bt-instancier");
@@ -85,6 +89,12 @@ let jeton = {
 };
 
 //FUNCTIONS :
+//Waiting time initialization :
+function waitingtimeInit(){
+    selectWaitingtime.innerHTML='<option value="1000">1 seconde</option>';
+    selectWaitingtime.innerHTML+='<option value="2000">2 seconde</option>';  
+    selectWaitingtime.innerHTML+='<option value="3000">3 seconde</option>'; 
+} 
 
 //Level initialization :
 function levelInit(){
@@ -157,7 +167,7 @@ function aleaTab(tableau){
 
 //The score screen is always displayed at the end of the game, even when the game is given up :
 function showScore(){
-    clearTimeout(); //Timeout of the hourglass for the curent game.
+    clearTimeout(gameTimeCountTimeout); //Timeout of the hourglass for the curent game.
     let minutes = Math.floor(timeCount/60);
     let secondes = timeCount%60;
 
@@ -202,13 +212,14 @@ function showScore(){
 //To calculate the duration of a game :
 function hourglass(){
     timeCount+=1;
-    setTimeout(hourglass, 1000);
+    gameTimeCountTimeout = setTimeout(hourglass, 1000);
 }
 
 //PROGRAM :
 
-//Level select box is setup once and for all : 
+//Level and waiting time select boxes are setup once and for all : 
 levelInit();
+waitingtimeInit();
 
 //Home page initialization (12 astrological signs) :
 showSignsInit();
@@ -220,6 +231,9 @@ btInstancier.addEventListener("click", function(){
     if(!gameIn){
         //Get the level :
         level = parseInt(selectLevel.value);
+
+        //Get the waitingtime :
+        waitingtime = parseInt(selectWaitingtime.value);
 
         //Built a level*2 images tab, at random :
         divRowJetons.innerHTML="";
@@ -267,6 +281,7 @@ btInstancier.addEventListener("click", function(){
         score = 0;  //number of discovered pairs (for the screen history)
 
         //Timer for this game (for the screen history) :
+        clearTimeout(gameTimeCountTimeout);
         timeCount = 0;
         hourglass();
     }
@@ -294,7 +309,7 @@ function HTMLselection(num){
 
             //If another jeton is shown :
             if(shownJetonNumber != -1){
-                setTimeout(waitAndGo,WAITINGTIME,num); //waiting for 2 seconds to memorize the 2 jetons
+                setTimeout(waitAndGo,waitingtime,num); //waiting for 2 seconds to memorize the 2 jetons
                 return null; //go out of the function not to interfere with the data below (the same data is managed at the end of the waitAndGo function)
                 //(to manage the asynchronous JS behaviour).
             }
